@@ -18,6 +18,7 @@ import { StackNavigator } from "react-navigation";
 import EnableNotificationScreen from "./EnableNotificationScreen";
 import CreateMessageScreen from "./CreateMessageScreen";
 import DashboardScreen from "./DashboardScreen";
+import CreateSMS from "./CreateSMS";
 import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
@@ -82,6 +83,9 @@ const ScheduledApp = StackNavigator(
       navigationOptions: {
         header: null
       }
+    },
+    CreateSMS: {
+      screen: CreateSMS
     }
   },
   {

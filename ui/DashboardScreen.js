@@ -6,16 +6,17 @@ import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
 import ActionButton from "react-native-action-button";
+import { StackNavigator } from "react-navigation";
 
 export default class DashboardScreen extends Component {
   render() {
+    const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Text>I'm the MyComponent component</Text>
         <ActionButton
           buttonColor="#FE434C"
           onPress={() => {
-            console.log("hi");
+            navigate("CreateSMS");
           }}
         />
       </View>
