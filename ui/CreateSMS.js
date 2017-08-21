@@ -4,9 +4,11 @@ import React, { Component } from "react";
 import {
   View,
   Text,
+  Platform,
   Keyboard,
   TextInput,
   TouchableOpacity,
+  ToastAndroid,
   StyleSheet
 } from "react-native";
 import * as strings from "../strings";
@@ -97,14 +99,26 @@ export default class CreateSMS extends Component {
 
   _onPress(navigate) {
     try {
-      realm.write(() => {
-        realm.create("NewMessage", {
-          receiptNumber: this.state.receiptnumber,
-          text: this.state.text,
-          time: this.state.time
+      if (!this.state.receiptnumber.trim()) {
+        // platform specific code
+        if (Platform.OS === "android")
+          ToastAndroid.show(strings.validate_receipt, ToastAndroid.SHORT);
+      } else if (!this.state.text.trim()) {
+        if (Platform.OS === "android")
+          ToastAndroid.show(strings.validate_text, ToastAndroid.SHORT);
+      } else if (!this.state.time.trim()) {
+        if (Platform.OS === "android")
+          ToastAndroid.show(strings.validate_time, ToastAndroid.SHORT);
+      } else {
+        realm.write(() => {
+          realm.create("NewMessage", {
+            receiptNumber: this.state.receiptnumber,
+            text: this.state.text,
+            time: this.state.time
+          });
+          navigate("DashboardScreen");
         });
-        navigate("DashboardScreen");
-      });
+      }
     } catch (error) {
       console.log(error);
     }

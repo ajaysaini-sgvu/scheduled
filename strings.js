@@ -22,3 +22,8 @@ export const enter_your_message = "Enter your Message";
 export const schedule_date = "Schedule Date & Time";
 
 export const schedule_message = "Schedule Message";
+
+// create sms component validations
+export const validate_receipt = "Please enter receipt number";
+export const validate_text = "Please enter message text";
+export const validate_time = "Please set date and time";

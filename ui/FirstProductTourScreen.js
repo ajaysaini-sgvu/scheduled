@@ -18,7 +18,7 @@ import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
 
-export default class SplashScreen extends Component {
+export default class FirstProductTourScreen extends Component {
   render() {
     console.disableYellowBox = true;
     const { navigate } = this.props.navigation;

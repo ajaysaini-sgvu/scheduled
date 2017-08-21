@@ -1,6 +1,6 @@
 import { StackNavigator } from "react-navigation";
 
-import SplashScreen from "./ui/SplashScreen";
+import FirstProductTourScreen from "./ui/FirstProductTourScreen";
 import EnableNotificationScreen from "./ui/EnableNotificationScreen";
 import CreateMessageScreen from "./ui/CreateMessageScreen";
 import DashboardScreen from "./ui/DashboardScreen";
@@ -8,8 +8,8 @@ import CreateSMS from "./ui/CreateSMS";
 
 export const StackNav = StackNavigator(
   {
-    Splash: {
-      screen: SplashScreen,
+    FirstProductTourScreen: {
+      screen: FirstProductTourScreen,
       navigationOptions: {
         header: null
       }
@@ -41,6 +41,6 @@ export const StackNav = StackNavigator(
     }
   },
   {
-    initialRouteName: "Splash"
+    initialRouteName: "FirstProductTourScreen"
   }
 );
