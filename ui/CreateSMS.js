@@ -15,7 +15,7 @@ import realm from "../db/realm";
 
 export default class CreateSMS extends Component {
   static navigationOptions = {
-    title: "New Message"
+    title: strings.new_message
   };
 
   constructor(props) {
@@ -98,6 +98,8 @@ export default class CreateSMS extends Component {
           time: ""
         });
       });
+      let message = realm.objects("NewMessage");
+      console.log(message.length);
     } catch (error) {
       console.log(error);
     }

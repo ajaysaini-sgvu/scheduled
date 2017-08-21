@@ -2,7 +2,7 @@ import Realm from "realm";
 
 class NewMessage extends Realm.Object {}
 NewMessage.schema = {
-  name: "Message",
+  name: "NewMessage",
   properties: {
     receiptNumber: "string",
     text: "string",
@@ -11,6 +11,5 @@ NewMessage.schema = {
 };
 
 export default new Realm({
-  path: "scheduled.realm",
-  schema: [NewMessage.schema]
+  schema: [NewMessage]
 });

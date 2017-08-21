@@ -24,14 +24,16 @@ export default class EnableNotificationScreen extends Component {
     return (
       <View style={styles.container}>
         <Image source={require("../img/enable_notification.png")} />
-        <Text style={styles.textStyle}> {strings.enable_notification} </Text>
+        <Text style={styles.textStyle}>
+          {" "}{strings.enable_notification}{" "}
+        </Text>
 
         <RoundButton
           buttonStyle={styles.roundButtonStyle}
           textStyle={styles.roundTextStyle}
           onPress={() => navigate("CreateMessage")}
         >
-          CONTINUE
+          {strings.continueText}
         </RoundButton>
 
         <Text

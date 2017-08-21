@@ -27,7 +27,7 @@ export default class CreateMessageScreen extends Component {
           buttonStyle={styles.roundButtonStyle}
           onPress={this.onPressButton}
         >
-          CREATE MESSAGE
+          {strings.continueText}
         </RoundButton>
       </View>
     );

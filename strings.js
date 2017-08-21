@@ -11,6 +11,10 @@ export const app_name = "Scheduled";
 
 export const OK = "OK";
 
+export const continueText = "CONTINUE";
+
+export const new_message = "New Message";
+
 export const select_recipient = "Select Recipient";
 
 export const enter_your_message = "Enter your Message";

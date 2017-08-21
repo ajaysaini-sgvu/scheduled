@@ -5,7 +5,6 @@
 
 import React, { Component } from "react";
 import {
-  AppRegistry,
   Image,
   View,
   Text,
@@ -14,16 +13,12 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
-import { StackNavigator } from "react-navigation";
-import EnableNotificationScreen from "./EnableNotificationScreen";
-import CreateMessageScreen from "./CreateMessageScreen";
-import DashboardScreen from "./DashboardScreen";
-import CreateSMS from "./CreateSMS";
+
 import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
 
-class SplashScreen extends Component {
+export default class SplashScreen extends Component {
   render() {
     console.disableYellowBox = true;
     const { navigate } = this.props.navigation;
@@ -51,46 +46,9 @@ class SplashScreen extends Component {
           textStyle={styles.roundTextStyle}
           onPress={() => navigate("EnableNotification")}
         >
-          CONTINUE
+          {strings.continueText}
         </RoundButton>
       </View>
     );
   }
 }
-
-const ScheduledApp = StackNavigator(
-  {
-    Splash: {
-      screen: SplashScreen,
-      navigationOptions: {
-        header: null
-      }
-    },
-    EnableNotification: {
-      screen: EnableNotificationScreen,
-      navigationOptions: {
-        header: null
-      }
-    },
-    CreateMessage: {
-      screen: CreateMessageScreen,
-      navigationOptions: {
-        header: null
-      }
-    },
-    DashboardScreen: {
-      screen: DashboardScreen,
-      navigationOptions: {
-        header: null
-      }
-    },
-    CreateSMS: {
-      screen: CreateSMS
-    }
-  },
-  {
-    initialRouteName: "Splash"
-  }
-);
-
-AppRegistry.registerComponent("Scheduled", () => ScheduledApp);
