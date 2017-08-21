@@ -11,5 +11,4 @@ export default class ScheduledApp extends Component {
     return <StackNav />;
   }
 }
-
 AppRegistry.registerComponent("Scheduled", () => ScheduledApp);

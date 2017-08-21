@@ -30,7 +30,10 @@ export const StackNav = StackNavigator(
       screen: DashboardScreen,
       navigationOptions: {
         headerLeft: null,
-        headerTitleStyle: { alignSelf: "center" }
+        headerTitleStyle: {
+          alignSelf: "center",
+          fontWeight: "100"
+        }
       }
     },
     CreateSMS: {
