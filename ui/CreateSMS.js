@@ -4,11 +4,10 @@ import React, { Component } from "react";
 import {
   View,
   Text,
-  Platform,
   Keyboard,
   TextInput,
   TouchableOpacity,
-  ToastAndroid,
+  Alert,
   StyleSheet
 } from "react-native";
 import * as strings from "../strings";
@@ -40,6 +39,7 @@ export default class CreateSMS extends Component {
     return (
       <View style={localStyles.container}>
         <TextInput
+          ref="receiptTextInput"
           style={{
             height: 40,
             width: "100%",
@@ -52,6 +52,7 @@ export default class CreateSMS extends Component {
         />
 
         <TextInput
+          ref="messageTextInput"
           style={{
             height: 40,
             width: "100%",
@@ -65,6 +66,7 @@ export default class CreateSMS extends Component {
         />
 
         <TextInput
+          ref="timeTextInput"
           style={{
             height: 40,
             width: "100%",
@@ -100,15 +102,14 @@ export default class CreateSMS extends Component {
   _onPress(navigate) {
     try {
       if (!this.state.receiptnumber.trim()) {
-        // platform specific code
-        if (Platform.OS === "android")
-          ToastAndroid.show(strings.validate_receipt, ToastAndroid.SHORT);
+        this.refs.receiptTextInput.focus();
+        Alert.alert(strings.app_name, strings.validate_receipt);
       } else if (!this.state.text.trim()) {
-        if (Platform.OS === "android")
-          ToastAndroid.show(strings.validate_text, ToastAndroid.SHORT);
+        this.refs.messageTextInput.focus();
+        Alert.alert(strings.app_name, strings.validate_text);
       } else if (!this.state.time.trim()) {
-        if (Platform.OS === "android")
-          ToastAndroid.show(strings.validate_time, ToastAndroid.SHORT);
+        this.refs.timeTextInput.focus();
+        Alert.alert(strings.app_name, strings.validate_time);
       } else {
         realm.write(() => {
           realm.create("NewMessage", {
