@@ -13,42 +13,78 @@ import {
   TouchableOpacity,
   AsyncStorage
 } from "react-native";
+import { NavigationActions } from "react-navigation";
 
 import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
 
 export default class FirstProductTourScreen extends Component {
+  constructor(props) {
+    super(props);
+    this._startDashboardScreen = this._startDashboardScreen.bind(this);
+
+    this.state = {
+      isProductTourCompleted: false
+    };
+  }
+
+  componentDidMount() {
+    AsyncStorage.getItem("@ProductTour:key").then(value => {
+      console.log(value);
+      if (value)
+        this.setState({
+          isProductTourCompleted: true
+        });
+    });
+  }
+
   render() {
     console.disableYellowBox = true;
     const { navigate } = this.props.navigation;
 
-    try {
-      AsyncStorage.getItem("@ProductTour:key").then(value => {
-        // control goes inside if when user has completed product tour
-        if (value) {
-          navigate("DashboardScreen");
-        }
-      });
-    } catch (error) {
-      console.log(error);
-    }
-
     return (
       <View style={styles.container}>
-        <Image source={require("../img/talk_people.png")} />
-        <Text style={styles.textStyle}>
-          {strings.talk_people}
-        </Text>
+        {this.state.isProductTourCompleted
+          ? this._startDashboardScreen()
+          : <View style={styles.container}>
+              <Image source={require("../img/talk_people.png")} />
+              <Text style={styles.textStyle}>
+                {strings.talk_people}
+              </Text>
 
-        <RoundButton
-          buttonStyle={styles.roundButtonStyle}
-          textStyle={styles.roundTextStyle}
-          onPress={() => navigate("EnableNotification")}
-        >
-          {strings.continueText}
-        </RoundButton>
+              <RoundButton
+                buttonStyle={styles.roundButtonStyle}
+                textStyle={styles.roundTextStyle}
+                onPress={() => {
+                  const resetAction = NavigationActions.reset({
+                    index: 0,
+                    actions: [
+                      NavigationActions.navigate({
+                        routeName: "EnableNotification"
+                      })
+                    ]
+                  });
+                  this.props.navigation.dispatch(resetAction);
+                }}
+              >
+                {strings.continueText}
+              </RoundButton>
+            </View>}
       </View>
     );
+  }
+
+  _startDashboardScreen() {
+    console.log("He");
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: "DashboardScreen"
+        })
+      ]
+    });
+    this.props.navigation.dispatch(resetAction);
   }
 }

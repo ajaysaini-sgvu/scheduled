@@ -6,8 +6,10 @@ import {
   Text,
   Keyboard,
   TextInput,
+  Platform,
   TouchableOpacity,
-  Alert,
+  ToastAndroid,
+  AlertIOS,
   StyleSheet
 } from "react-native";
 import * as strings from "../strings";
@@ -15,6 +17,7 @@ import styles from "../css/styles";
 import RoundButton from "../views/RoundButton";
 import realm from "../db/realm";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import { NavigationActions } from "react-navigation";
 
 export default class CreateSMS extends Component {
   static navigationOptions = {
@@ -102,14 +105,32 @@ export default class CreateSMS extends Component {
   _onPress(navigate) {
     try {
       if (!this.state.receiptnumber.trim()) {
+        if (Platform.OS === "android") {
+          //code of android platform
+          ToastAndroid.show(strings.validate_receipt, ToastAndroid.SHORT);
+        } else {
+          //code of iOS platform
+          AlertIOS.alert(strings.app_name, strings.validate_receipt);
+        }
         this.refs.receiptTextInput.focus();
-        Alert.alert(strings.app_name, strings.validate_receipt);
       } else if (!this.state.text.trim()) {
+        if (Platform.OS === "android") {
+          //code of android platform
+          ToastAndroid.show(strings.validate_text, ToastAndroid.SHORT);
+        } else {
+          //code of iOS platform
+          AlertIOS.alert(strings.app_name, strings.validate_text);
+        }
         this.refs.messageTextInput.focus();
-        Alert.alert(strings.app_name, strings.validate_text);
       } else if (!this.state.time.trim()) {
+        if (Platform.OS === "android") {
+          //code of android platform
+          ToastAndroid.show(strings.validate_time, ToastAndroid.SHORT);
+        } else {
+          //code of iOS platform
+          AlertIOS.alert(strings.app_name, strings.validate_time);
+        }
         this.refs.timeTextInput.focus();
-        Alert.alert(strings.app_name, strings.validate_time);
       } else {
         realm.write(() => {
           realm.create("NewMessage", {
@@ -117,7 +138,15 @@ export default class CreateSMS extends Component {
             text: this.state.text,
             time: this.state.time
           });
-          navigate("DashboardScreen");
+          const resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [
+              NavigationActions.navigate({
+                routeName: "DashboardScreen"
+              })
+            ]
+          });
+          this.props.navigation.dispatch(resetAction);
         });
       }
     } catch (error) {

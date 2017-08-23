@@ -8,7 +8,7 @@ import {
   StyleSheet,
   AsyncStorage
 } from "react-native";
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, NavigationActions } from "react-navigation";
 import styles from "../css/styles";
 import * as strings from "../strings";
 import RoundButton from "../views/RoundButton";
@@ -38,7 +38,15 @@ export default class CreateMessageScreen extends Component {
     try {
       await AsyncStorage.setItem("@ProductTour:key", "true");
       const { navigate } = this.props.navigation;
-      navigate("DashboardScreen");
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            routeName: "DashboardScreen"
+          })
+        ]
+      });
+      this.props.navigation.dispatch(resetAction);
     } catch (error) {
       console.log(error);
     }

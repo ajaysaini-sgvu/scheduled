@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-background-job')
     compile project(':realm')
     compile project(':react-native-vector-icons')
     implementation project(':realm')

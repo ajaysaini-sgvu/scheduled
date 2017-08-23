@@ -12,7 +12,7 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import { StackNavigator } from "react-navigation";
+import { StackNavigator, NavigationActions } from "react-navigation";
 import CreateMessageScreen from "./CreateMessageScreen";
 import styles from "../css/styles";
 import * as strings from "../strings";
@@ -31,7 +31,15 @@ export default class EnableNotificationScreen extends Component {
         <RoundButton
           buttonStyle={styles.roundButtonStyle}
           textStyle={styles.roundTextStyle}
-          onPress={() => navigate("CreateMessage")}
+          onPress={() => {
+            const resetAction = NavigationActions.reset({
+              index: 0,
+              actions: [
+                NavigationActions.navigate({ routeName: "CreateMessage" })
+              ]
+            });
+            this.props.navigation.dispatch(resetAction);
+          }}
         >
           {strings.continueText}
         </RoundButton>
