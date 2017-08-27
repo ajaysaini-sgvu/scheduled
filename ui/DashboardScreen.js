@@ -33,7 +33,6 @@ export default class DashboardScreen extends Component {
     const { navigate } = this.props.navigation;
     let scheduledMessages = realm.objects("NewMessage");
     this.state.data = [...scheduledMessages];
-    console.log(this.state.data);
     return (
       <View style={styles.container}>
         <FlatList

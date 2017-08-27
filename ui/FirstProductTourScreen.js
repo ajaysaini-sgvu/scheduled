@@ -31,7 +31,6 @@ export default class FirstProductTourScreen extends Component {
 
   componentDidMount() {
     AsyncStorage.getItem("@ProductTour:key").then(value => {
-      console.log(value);
       if (value)
         this.setState({
           isProductTourCompleted: true
@@ -76,7 +75,6 @@ export default class FirstProductTourScreen extends Component {
   }
 
   _startDashboardScreen() {
-    console.log("He");
     const resetAction = NavigationActions.reset({
       index: 0,
       actions: [

@@ -3,17 +3,18 @@ package com.scheduled;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.pilloxa.backgroundjob.BackgroundJobPackage;
-import io.realm.react.RealmReactPackage;
-import io.realm.react.RealmReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
+import com.pilloxa.backgroundjob.BackgroundJobPackage;
+import com.scheduled.smsmodule.ScheduleSMSReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
+
+import io.realm.react.RealmReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -29,7 +30,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new BackgroundJobPackage(),
             new RealmReactPackage(),
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            new ScheduleSMSReactPackage()
       );
     }
   };

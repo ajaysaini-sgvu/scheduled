@@ -133,9 +133,9 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-background-job')
-    compile project(':realm')
-    compile project(':react-native-vector-icons')
+    implementation project(':react-native-background-job')
+    implementation project(':realm')
+    implementation project(':react-native-vector-icons')
     implementation project(':realm')
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.0.1'

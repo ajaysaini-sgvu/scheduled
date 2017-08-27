@@ -27,3 +27,7 @@ export const schedule_message = "Schedule Message";
 export const validate_receipt = "Please enter receipt number";
 export const validate_text = "Please enter message text";
 export const validate_time = "Please set date and time";
+
+export const permission_required = "PERMISSION REQUIRED";
+export const send_sms_deny_permission =
+  "Scheduled app needs send SMS permission to send scheduled SMS. Don't worry. These are standard permissions and we would not use for any kind of spamming.";

@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   ToastAndroid,
   AlertIOS,
+  Alert,
   StyleSheet
 } from "react-native";
 import * as strings from "../strings";
@@ -18,6 +19,8 @@ import RoundButton from "../views/RoundButton";
 import realm from "../db/realm";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { NavigationActions } from "react-navigation";
+import ScheduleText from "../utils/ScheduleSMS";
+var utils = require("../utils/PermissionManager.js");
 
 export default class CreateSMS extends Component {
   static navigationOptions = {
@@ -27,7 +30,6 @@ export default class CreateSMS extends Component {
   constructor(props) {
     super(props);
     this._onPress = this._onPress.bind(this);
-
     this.state = {
       receiptnumber: "",
       text: "",
@@ -49,6 +51,7 @@ export default class CreateSMS extends Component {
             borderColor: "gray",
             borderWidth: 1
           }}
+          keyboardType="phone-pad"
           underlineColorAndroid="transparent"
           placeholder={strings.select_recipient}
           onChangeText={receiptnumber => this.setState({ receiptnumber })}
@@ -86,7 +89,7 @@ export default class CreateSMS extends Component {
           <RoundButton
             textStyle={styles.roundTextStyle}
             buttonStyle={styles.roundButtonStyle}
-            onPress={() => this._onPress(navigate)}
+            onPress={() => this._onPress()}
           >
             {strings.schedule_message}
           </RoundButton>
@@ -102,7 +105,7 @@ export default class CreateSMS extends Component {
     );
   }
 
-  _onPress(navigate) {
+  _onPress() {
     try {
       if (!this.state.receiptnumber.trim()) {
         if (Platform.OS === "android") {
@@ -132,22 +135,36 @@ export default class CreateSMS extends Component {
         }
         this.refs.timeTextInput.focus();
       } else {
-        realm.write(() => {
-          realm.create("NewMessage", {
-            receiptNumber: this.state.receiptnumber,
-            text: this.state.text,
-            time: this.state.time
-          });
-          const resetAction = NavigationActions.reset({
-            index: 0,
-            actions: [
-              NavigationActions.navigate({
-                routeName: "DashboardScreen"
-              })
-            ]
-          });
-          this.props.navigation.dispatch(resetAction);
-        });
+        if (Platform.OS === "android") {
+          if (Platform.Version >= 23) {
+            Promise.resolve(utils.requestSendSMSPermission()).then(result => {
+              // user granted SMS permission
+              if (result) {
+                // save message into local database and calling native module schedule method
+                this._saveScheduleMessage();
+                ScheduleText.schedule(
+                  this.state.receiptnumber,
+                  this.state.text,
+                  this.state.time
+                );
+              } else {
+                // user denied SMS permission
+                Alert.alert(
+                  strings.permission_required,
+                  strings.send_sms_deny_permission
+                );
+              }
+            });
+          } else {
+            // save message into local database and calling native module schedule method
+            this._saveScheduleMessage();
+            ScheduleText.schedule(
+              this.state.receiptnumber,
+              this.state.text,
+              this.state.time
+            );
+          }
+        }
       }
     } catch (error) {
       console.log(error);
@@ -165,6 +182,25 @@ export default class CreateSMS extends Component {
     this.setState({ time: date.toLocaleString() });
     this._hideDateTimePicker();
   };
+
+  _saveScheduleMessage() {
+    const resetAction = NavigationActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({
+          routeName: "DashboardScreen"
+        })
+      ]
+    });
+    realm.write(() => {
+      realm.create("NewMessage", {
+        receiptNumber: this.state.receiptnumber,
+        text: this.state.text,
+        time: this.state.time
+      });
+      this.props.navigation.dispatch(resetAction);
+    });
+  }
 }
 
 const localStyles = StyleSheet.create({
