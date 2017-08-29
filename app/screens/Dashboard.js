@@ -38,6 +38,7 @@ export default class Dashboard extends Component {
     return (
       <View style={styles.container}>
         <FlatList
+        keyExtractor={(item, index) => index}
           style={{
             width: "100%"
           }}

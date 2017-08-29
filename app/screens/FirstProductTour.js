@@ -23,18 +23,13 @@ export default class FirstProductTour extends Component {
   constructor(props) {
     super(props);
     this._startDashboardScreen = this._startDashboardScreen.bind(this);
-
-    this.state = {
-      isProductTourCompleted: false
-    };
   }
 
   componentDidMount() {
     AsyncStorage.getItem("@ProductTour:key").then(value => {
-      if (value)
-        this.setState({
-          isProductTourCompleted: true
-        });
+      if (value) {
+        this._startDashboardScreen();
+      }
     });
   }
 
@@ -43,32 +38,30 @@ export default class FirstProductTour extends Component {
 
     return (
       <View style={styles.container}>
-        {this.state.isProductTourCompleted
-          ? this._startDashboardScreen()
-          : <View style={styles.container}>
-              <Image source={require("../../img/talk_people.png")} />
-              <Text style={styles.centerAlignTextStyle}>
-                {strings.talk_people}
-              </Text>
+        <View style={styles.container}>
+          <Image source={require("../../img/talk_people.png")} />
+          <Text style={styles.centerAlignTextStyle}>
+            {strings.talk_people}
+          </Text>
 
-              <RoundButton
-                robotoThinStyle={styles.roundButtonStyle}
-                centerAlignTextStyle={styles.whiteColorStyle}
-                onPress={() => {
-                  const resetAction = NavigationActions.reset({
-                    index: 0,
-                    actions: [
-                      NavigationActions.navigate({
-                        routeName: "SecondProductTour"
-                      })
-                    ]
-                  });
-                  this.props.navigation.dispatch(resetAction);
-                }}
-              >
-                {strings.continueText}
-              </RoundButton>
-            </View>}
+          <RoundButton
+            robotoThinStyle={styles.roundButtonStyle}
+            centerAlignTextStyle={styles.whiteColorStyle}
+            onPress={() => {
+              const resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [
+                  NavigationActions.navigate({
+                    routeName: "SecondProductTour"
+                  })
+                ]
+              });
+              this.props.navigation.dispatch(resetAction);
+            }}
+          >
+            {strings.continueText}
+          </RoundButton>
+        </View>
       </View>
     );
   }
