@@ -4,6 +4,7 @@
 
 import React, { Component } from "react";
 import { AppRegistry } from "react-native";
+
 import { StackNav } from "./router";
 
 export default class ScheduledApp extends Component {
@@ -11,4 +12,5 @@ export default class ScheduledApp extends Component {
     return <StackNav />;
   }
 }
+
 AppRegistry.registerComponent("Scheduled", () => ScheduledApp);

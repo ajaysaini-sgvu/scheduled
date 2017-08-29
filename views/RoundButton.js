@@ -1,5 +1,4 @@
 import React from "react";
-
 import { Text, TouchableOpacity } from "react-native";
 
 const RoundButton = ({ onPress, children, buttonStyle, textStyle }) => {

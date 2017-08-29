@@ -13,16 +13,18 @@ import {
   Alert,
   StyleSheet
 } from "react-native";
-import * as strings from "../strings";
-import styles from "../css/styles";
+import { NavigationActions } from "react-navigation";
+import DateTimePicker from "react-native-modal-datetime-picker";
+
 import RoundButton from "../views/RoundButton";
 import realm from "../db/realm";
-import DateTimePicker from "react-native-modal-datetime-picker";
-import { NavigationActions } from "react-navigation";
 import ScheduleText from "../utils/ScheduleSMS";
 var utils = require("../utils/PermissionManager.js");
+import styles from "../css/styles";
+import * as strings from "../strings";
 
 export default class CreateSMS extends Component {
+
   static navigationOptions = {
     title: strings.new_message
   };

@@ -8,16 +8,18 @@ import {
   TouchableOpacity,
   StyleSheet
 } from "react-native";
-import styles from "../css/styles";
-import * as strings from "../strings";
-import RoundButton from "../views/RoundButton";
-import ActionButton from "react-native-action-button";
-import { StackNavigator } from "react-navigation";
-import realm from "../db/realm";
 import { Container, Card, CardItem } from "native-base";
+import { StackNavigator } from "react-navigation";
+import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 
+import RoundButton from "../views/RoundButton";
+import realm from "../db/realm";
+import styles from "../css/styles";
+import * as strings from "../strings";
+
 export default class DashboardScreen extends Component {
+
   static navigationOptions = {
     title: "Scheduled"
   };

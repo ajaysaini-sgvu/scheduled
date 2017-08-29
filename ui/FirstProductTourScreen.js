@@ -15,9 +15,9 @@ import {
 } from "react-native";
 import { NavigationActions } from "react-navigation";
 
+import RoundButton from "../views/RoundButton";
 import styles from "../css/styles";
 import * as strings from "../strings";
-import RoundButton from "../views/RoundButton";
 
 export default class FirstProductTourScreen extends Component {
   constructor(props) {

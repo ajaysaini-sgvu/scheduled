@@ -13,10 +13,11 @@ import {
   StyleSheet
 } from "react-native";
 import { StackNavigator, NavigationActions } from "react-navigation";
+
 import CreateMessageScreen from "./CreateMessageScreen";
+import RoundButton from "../views/RoundButton";
 import styles from "../css/styles";
 import * as strings from "../strings";
-import RoundButton from "../views/RoundButton";
 
 export default class EnableNotificationScreen extends Component {
   render() {
