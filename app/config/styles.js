@@ -9,16 +9,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column"
   },
-  textStyle: {
+  centerAlignTextStyle: {
     fontSize: 22,
     textAlign: "center",
     fontFamily: "RobotoThin"
   },
-  buttonStyle: {
+  robotoThinStyle: {
     fontFamily: "RobotoThin"
   },
-  roundTextStyle: {
+  whiteColorStyle: {
     color: "white"
+  },
+  blackColorStyle: {
+    color: "black"
   },
   roundButtonStyle: {
     backgroundColor: "#FE434C",
@@ -28,6 +31,12 @@ const styles = StyleSheet.create({
     width: 240,
     marginTop: 30,
     height: 40
+  },
+  createSMSInputBoxStyle: {
+    height: 40,
+    width: "100%",
+    borderColor: "gray",
+    borderWidth: 1
   }
 });
 

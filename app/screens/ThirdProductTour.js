@@ -10,22 +10,22 @@ import {
 } from "react-native";
 import { StackNavigator, NavigationActions } from "react-navigation";
 
-import styles from "../css/styles";
-import * as strings from "../strings";
-import RoundButton from "../views/RoundButton";
+import styles from "../config/styles";
+import * as strings from "../config/strings";
+import RoundButton from "../components/Button/RoundButton";
 
-export default class CreateMessageScreen extends Component {
+export default class ThirdProductTour extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require("../img/create_message.png")} />
-        <Text style={styles.textStyle}>
+        <Image source={require("../../img/create_message.png")} />
+        <Text style={styles.centerAlignTextStyle}>
           {strings.create_message}
         </Text>
 
         <RoundButton
-          textStyle={styles.roundTextStyle}
-          buttonStyle={styles.roundButtonStyle}
+          centerAlignTextStyle={styles.whiteColorStyle}
+          robotoThinStyle={styles.roundButtonStyle}
           onPress={this.onPressButton}
         >
           {strings.continueText}
@@ -43,7 +43,7 @@ export default class CreateMessageScreen extends Component {
         index: 0,
         actions: [
           NavigationActions.navigate({
-            routeName: "DashboardScreen"
+            routeName: "Dashboard"
           })
         ]
       });

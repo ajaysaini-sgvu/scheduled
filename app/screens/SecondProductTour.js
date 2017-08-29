@@ -14,29 +14,28 @@ import {
 } from "react-native";
 import { StackNavigator, NavigationActions } from "react-navigation";
 
-import CreateMessageScreen from "./CreateMessageScreen";
-import RoundButton from "../views/RoundButton";
-import styles from "../css/styles";
-import * as strings from "../strings";
+import RoundButton from "../components/Button/RoundButton";
+import styles from "../config/styles";
+import * as strings from "../config/strings";
 
-export default class EnableNotificationScreen extends Component {
+export default class SecondProductTour extends Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
-        <Image source={require("../img/enable_notification.png")} />
-        <Text style={styles.textStyle}>
+        <Image source={require("../../img/enable_notification.png")} />
+        <Text style={styles.centerAlignTextStyle}>
           {" "}{strings.enable_notification}{" "}
         </Text>
 
         <RoundButton
-          buttonStyle={styles.roundButtonStyle}
-          textStyle={styles.roundTextStyle}
+          robotoThinStyle={styles.roundButtonStyle}
+          centerAlignTextStyle={styles.whiteColorStyle}
           onPress={() => {
             const resetAction = NavigationActions.reset({
               index: 0,
               actions: [
-                NavigationActions.navigate({ routeName: "CreateMessage" })
+                NavigationActions.navigate({ routeName: "ThirdProductTour" })
               ]
             });
             this.props.navigation.dispatch(resetAction);

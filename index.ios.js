@@ -2,15 +2,7 @@
  * @flow
  */
 
-import React, { Component } from "react";
-import { AppRegistry } from "react-native";
+ import { AppRegistry } from "react-native";
+ import App from './app/index';
 
-import { StackNav } from "./router";
-
-export default class ScheduledApp extends Component {
-  render() {
-    return <StackNav />;
-  }
-}
-
-AppRegistry.registerComponent("Scheduled", () => ScheduledApp);
+ AppRegistry.registerComponent("Scheduled", () => App);

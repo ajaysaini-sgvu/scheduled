@@ -15,11 +15,11 @@ import {
 } from "react-native";
 import { NavigationActions } from "react-navigation";
 
-import RoundButton from "../views/RoundButton";
-import styles from "../css/styles";
-import * as strings from "../strings";
+import RoundButton from "../components/Button/RoundButton";
+import styles from "../config/styles";
+import * as strings from "../config/strings";
 
-export default class FirstProductTourScreen extends Component {
+export default class FirstProductTour extends Component {
   constructor(props) {
     super(props);
     this._startDashboardScreen = this._startDashboardScreen.bind(this);
@@ -39,7 +39,6 @@ export default class FirstProductTourScreen extends Component {
   }
 
   render() {
-    console.disableYellowBox = true;
     const { navigate } = this.props.navigation;
 
     return (
@@ -47,20 +46,20 @@ export default class FirstProductTourScreen extends Component {
         {this.state.isProductTourCompleted
           ? this._startDashboardScreen()
           : <View style={styles.container}>
-              <Image source={require("../img/talk_people.png")} />
-              <Text style={styles.textStyle}>
+              <Image source={require("../../img/talk_people.png")} />
+              <Text style={styles.centerAlignTextStyle}>
                 {strings.talk_people}
               </Text>
 
               <RoundButton
-                buttonStyle={styles.roundButtonStyle}
-                textStyle={styles.roundTextStyle}
+                robotoThinStyle={styles.roundButtonStyle}
+                centerAlignTextStyle={styles.whiteColorStyle}
                 onPress={() => {
                   const resetAction = NavigationActions.reset({
                     index: 0,
                     actions: [
                       NavigationActions.navigate({
-                        routeName: "EnableNotification"
+                        routeName: "SecondProductTour"
                       })
                     ]
                   });
@@ -79,7 +78,7 @@ export default class FirstProductTourScreen extends Component {
       index: 0,
       actions: [
         NavigationActions.navigate({
-          routeName: "DashboardScreen"
+          routeName: "Dashboard"
         })
       ]
     });

@@ -16,12 +16,12 @@ import {
 import { NavigationActions } from "react-navigation";
 import DateTimePicker from "react-native-modal-datetime-picker";
 
-import RoundButton from "../views/RoundButton";
-import realm from "../db/realm";
-import ScheduleText from "../utils/ScheduleSMS";
-var utils = require("../utils/PermissionManager.js");
-import styles from "../css/styles";
-import * as strings from "../strings";
+import RoundButton from "../components/Button/RoundButton";
+import realm from "../lib/realm";
+import ScheduleText from "../lib/ScheduleSMS";
+var utils = require("../lib/PermissionManager.js");
+import styles from "../config/styles";
+import * as strings from "../config/strings";
 
 export default class CreateSMS extends Component {
 
@@ -47,12 +47,7 @@ export default class CreateSMS extends Component {
       <View style={localStyles.container}>
         <TextInput
           ref="receiptTextInput"
-          style={{
-            height: 40,
-            width: "100%",
-            borderColor: "gray",
-            borderWidth: 1
-          }}
+          style={styles.createSMSInputBoxStyle}
           keyboardType="phone-pad"
           underlineColorAndroid="transparent"
           placeholder={strings.select_recipient}
@@ -61,13 +56,7 @@ export default class CreateSMS extends Component {
 
         <TextInput
           ref="messageTextInput"
-          style={{
-            height: 40,
-            width: "100%",
-            borderColor: "gray",
-            borderWidth: 1,
-            marginTop: 8
-          }}
+          style={[styles.createSMSInputBoxStyle,{ marginTop: 8 }]}
           underlineColorAndroid="transparent"
           placeholder={strings.enter_your_message}
           onChangeText={text => this.setState({ text })}
@@ -75,22 +64,17 @@ export default class CreateSMS extends Component {
 
         <TextInput
           ref="timeTextInput"
-          style={{
-            height: 40,
-            width: "100%",
-            borderColor: "gray",
-            borderWidth: 1,
-            marginTop: 8
-          }}
+          style={[styles.createSMSInputBoxStyle,{ marginTop: 8 }]}
           underlineColorAndroid="transparent"
           placeholder={strings.schedule_date}
           onFocus={this._showDateTimePicker}
           value={this.state.time.toString()}
         />
+        
         <View style={{ alignItems: "center" }}>
           <RoundButton
-            textStyle={styles.roundTextStyle}
-            buttonStyle={styles.roundButtonStyle}
+            centerAlignTextStyle={styles.whiteColorStyle}
+            robotoThinStyle={styles.roundButtonStyle}
             onPress={() => this._onPress()}
           >
             {strings.schedule_message}
@@ -190,7 +174,7 @@ export default class CreateSMS extends Component {
       index: 0,
       actions: [
         NavigationActions.navigate({
-          routeName: "DashboardScreen"
+          routeName: "Dashboard"
         })
       ]
     });

@@ -13,12 +13,12 @@ import { StackNavigator } from "react-navigation";
 import ActionButton from "react-native-action-button";
 import Icon from "react-native-vector-icons/SimpleLineIcons";
 
-import RoundButton from "../views/RoundButton";
-import realm from "../db/realm";
-import styles from "../css/styles";
-import * as strings from "../strings";
+import RoundButton from "../components/Button/RoundButton";
+import realm from "../lib/realm";
+import styles from "../config/styles";
+import * as strings from "../config/strings";
 
-export default class DashboardScreen extends Component {
+export default class Dashboard extends Component {
 
   static navigationOptions = {
     title: "Scheduled"
@@ -56,10 +56,10 @@ export default class DashboardScreen extends Component {
                           marginLeft: 20
                         }}
                       >
-                        <Text style={{ color: "black" }}>
+                        <Text style={styles.blackColorStyle}>
                           {item.receiptNumber}
                         </Text>
-                        <Text style={{ color: "black" }}>
+                        <Text style={styles.blackColorStyle}>
                           {item.text}
                         </Text>
                       </View>

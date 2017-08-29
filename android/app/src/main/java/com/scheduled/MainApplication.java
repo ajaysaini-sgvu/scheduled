@@ -8,7 +8,6 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.pilloxa.backgroundjob.BackgroundJobPackage;
 import com.scheduled.smsmodule.ScheduleSMSReactPackage;
 
 import java.util.Arrays;
@@ -28,7 +27,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new BackgroundJobPackage(),
             new RealmReactPackage(),
             new VectorIconsPackage(),
             new ScheduleSMSReactPackage()
