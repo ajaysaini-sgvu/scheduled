@@ -1,6 +1,6 @@
 # Scheduled
 
-Scheduled is an app which attempts to use the latest cutting edge libraries and tools. As a summary:
+Scheduled is an app to send SMS at specific date and time on android platform. It uses the latest cutting edge libraries and tools. As a summary:
 
  * Entirely written in [React Native](https://facebook.github.io/react-native/)
  * Uses [Realm](https://realm.io/)
