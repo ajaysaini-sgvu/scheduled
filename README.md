@@ -1,9 +1,5 @@
 # Scheduled
 
-Scheduled is a **work-in-progress** to send SMS at anytime in future from this application.
-
-## Android development
-
 Scheduled is an app which attempts to use the latest cutting edge libraries and tools. As a summary:
 
  * Entirely written in [React Native](https://facebook.github.io/react-native/)
