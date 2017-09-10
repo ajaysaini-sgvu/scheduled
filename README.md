@@ -1,7 +1,6 @@
 # Scheduled
 
-Scheduled is a **work-in-progress** to send SMS at anytime in future from this application. It is still in its early stages of development and currently
-only contains two pieces of UI. It is under heavy development.
+Scheduled is a **work-in-progress** to send SMS at anytime in future from this application.
 
 ## Android development
 
@@ -16,11 +15,8 @@ First off, you require the latest Android Studio 3.0 (or newer), React Native, A
 
 ## Contributions
 
-If you've found an error in this sample, please file an issue.
-
-Patches are encouraged, and may be submitted by forking this project and
-submitting a pull request. Since this project is still in its very early stages,
-if your change is substantial, please raise an issue first to discuss it.
+If you've found an error in this sample, please file an issue. Patches are encouraged, and may be submitted by forking this project and
+submitting a pull request.
 
 ## License
 
