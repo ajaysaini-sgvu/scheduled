@@ -1,4 +1,4 @@
-# Scheduled (work-in-progress 👷🔧️👷‍♀️⛏)
+# Scheduled
 
 Scheduled is a **work-in-progress** to send SMS at anytime in future from this application. It is still in its early stages of development and currently
 only contains two pieces of UI. It is under heavy development.
